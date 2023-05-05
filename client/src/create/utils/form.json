@@ -1,0 +1,44 @@
+[
+	{
+		"id": 1,
+		"name": "customer",
+		"title": "Infos client",
+		"inputs": [
+			{
+				"label": "Prénom",
+				"name": "firstname",
+				"type": "text",
+				"required": false,
+				"visibility": null
+			},
+			{
+				"label": "Age",
+				"name": "age",
+				"type": "number",
+				"required": false,
+				"visibility": "firstname=John"
+			}
+		]
+	},
+	{
+		"id": 2,
+		"name": "login",
+		"title": "Infos login",
+		"inputs": [
+			{
+				"label": "Login",
+				"name": "login",
+				"type": "text",
+				"required": true,
+				"visibility": "firstname=John"
+			},
+			{
+				"label": "Password",
+				"name": "password",
+				"type": "password",
+				"required": true,
+				"visibility": "firstname=John"
+			}
+		]
+	}
+]

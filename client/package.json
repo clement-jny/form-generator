@@ -3,6 +3,10 @@
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/clement-jny/form-generator"
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
@@ -11,7 +15,8 @@
 	},
 	"dependencies": {
 		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
+		"react-dom": "^18.2.0",
+		"react-router-dom": "^6.11.1"
 	},
 	"devDependencies": {
 		"@testing-library/jest-dom": "^5.16.5",
