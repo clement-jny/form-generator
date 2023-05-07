@@ -1,14 +1,21 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Input } from "./components/input";
 // import formData from "./utils/form.json";
 
 export const CreatePage = ({ blocks = null }) => {
+	//const { state: { content } } = useLocation();
+	//console.log(content);
+	
 	const [config, setConfig] = useState([]);
+	//if (content) setConfig(content);
+	//console.log("config", config);
+
 	// const [isReady, setIsReady] = useState(false);
 	const [formInputs, setFormInputs] = useState({});
 
 	useEffect(() => {
-		fetch("http://localhost:5173/src/create/utils/form.json")
+		fetch("http://localhost:5173/src/create/utils/configuration.json")
 			.then((res) => {
 				if (res.ok) {
 					return res.json();
@@ -84,7 +91,7 @@ export const CreatePage = ({ blocks = null }) => {
 
 
 	return (
-		<>
+		<section>
 		{
 			config.length > 0 ? 
 			
@@ -121,6 +128,6 @@ export const CreatePage = ({ blocks = null }) => {
 				</form>
 			: <p>pas encore</p>
 		}
-		</>
+		</section>
 	);
 };

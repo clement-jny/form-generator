@@ -1,13 +1,11 @@
-import { Button } from "./components/button";
+import { Landing } from "./components/landing";
+import { Dropzone } from "./components/dropZone";
 
 export const HomePage = () => {
 	return (
 		<>
-			<h1>Hello World!</h1>
-
-			<Button link="/create" text={"Get Started"} />
-			<Button link="/history" text={"History"} />
-			<Button link="/create" text={"About"} />
+			<Landing />
+			<Dropzone />
 		</>
-	)
+	);
 };

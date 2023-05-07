@@ -1,0 +1,13 @@
+.flex {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+
+
+.blue {
+	background-color: rgb(78, 132, 179);
+}
