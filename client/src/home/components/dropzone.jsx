@@ -1,9 +1,8 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 
 import styles from "../css/homePage.module.css";
-import { baseStyle, acceptStyle, rejectStyle } from "../css/dropzone.css.js";
-import { Link } from "react-router-dom";
 
 export const Dropzone = () => {
 	const [content, setContent] = useState([]);
@@ -33,11 +32,11 @@ export const Dropzone = () => {
 		}
 	);
 
-	const dropzoneStyle = useMemo(() => ({
-		...baseStyle,
-		...(isDragAccept ? acceptStyle : {}),
-		...(isDragReject ? rejectStyle : {})
-	}), [isDragAccept, isDragReject]);
+	// const dropzoneStyle = useMemo(() => ({
+	// 	...baseStyle,
+	// 	...(isDragAccept ? acceptStyle : {}),
+	// 	...(isDragReject ? rejectStyle : {})
+	// }), [isDragAccept, isDragReject]);
 
 	const acceptedFileItems = acceptedFiles.map(file => (
 		<li key={file.path}>
@@ -46,6 +45,7 @@ export const Dropzone = () => {
 	));
 
 	const fileRejectionItems = fileRejections.map(({ file, errors }) => {
+		console.log(errors);
 		return (
 			<li key={file.path}>
 				{file.path} - {file.size} bytes
@@ -57,17 +57,14 @@ export const Dropzone = () => {
 	});
 
 	return (
-		<section id="start" className="">
-
-			<div {...getRootProps({ style: dropzoneStyle })}>
+		<section id="start" className={styles.container}>
+			<div {...getRootProps()} className={`${styles.baseStyle} ${isDragAccept ? styles.acceptStyle : isDragReject ? styles.rejectStyle : ""}`}>  {/* { style: dropzoneStyle } */}
 				<input {...getInputProps()} />
 
-				<p>Drag 'n' drop here</p>
+				<p className={styles.title}>Drag 'n' drop here</p>
 				<em>(Only 1 .json file will be accepted)</em>
 
-				<button type="button" onClick={open}>
-					Open File Dialog
-				</button>
+				<button type="button" onClick={open}>Open File Dialog</button>
 			</div>
 
 			<aside>
@@ -77,12 +74,19 @@ export const Dropzone = () => {
 				<ul>{fileRejectionItems}</ul>
 			</aside>
 
-			<aside>
-				<button onClick={prev => setIsDisabled(!prev)}>Update</button>
-				<textarea value={content} onChange={e => setContent(e.target.value)} disabled={isDisabled}></textarea>
+			{
+				acceptedFiles ? (
+					<div>
+						{/* <button onClick={prev => setIsDisabled(!prev)}>Update</button> */}
+						<button onClick={console.log(content[1])}>Update</button>
+						<textarea cols="50" rows="15" value={content} onChange={e => setContent(e.target.value)} disabled={isDisabled} />
 
-				<Link to="/create" state={{ content: content }}>Generate</Link>
-			</aside>
+						<Link to="/create" state={{ content: content }}>Generate</Link>
+					</div>
+				) : (<p>11</p>)
+			}
+
+			
 		</section>
 	);
 };

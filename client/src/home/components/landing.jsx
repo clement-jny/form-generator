@@ -3,19 +3,20 @@ import styles from "../css/homePage.module.css";
 
 export const Landing = () => {
 	return (
-		<section className={styles.flex}>
-				<h1 className={styles.blue}>Form Generator</h1>
+		<section className={styles.container}>
+			<div className={styles.heading}>
+				<h1 className={styles.title}>Form Generator</h1>
 
-				<div>
-					<a href="#start">Get Started!</a>
+				<q className={styles.quote}>Create forms easily from a JSON file!</q>
+			</div>
 
-					<Link to="/create">Get </Link>
-					<Link to="/history">History</Link>
+			<span className={styles.border}></span>
 
-				</div>
+			<div className={styles.linksContainer}>
+				<a href="#start" className={styles.link}>Get Started</a>
 
-				
-
-			</section>
+				<Link to="/history" className={styles.link}>History</Link>
+			</div>
+		</section>
 	);
 };
