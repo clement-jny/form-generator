@@ -1,0 +1,86 @@
+@import "@radix-ui/colors/slate.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/red.css";
+
+
+.container {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.dropzone {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 675px;
+	height: 350px;
+	padding: 20px;
+	border: 3px dashed var(--slate9);
+	outline: none;
+	transition: border .24s ease-in-out
+}
+
+.dropzoneAccept {
+	border-color: var(--green9) !important;
+}
+
+.dropzoneReject {
+	border-color: var(--red9) !important;
+}
+
+.title {
+	color: var(--slate11);
+	font-size: 55px;
+}
+.subtitle {
+	color: var(--slate11);
+}
+
+.button {
+	margin-top: 40px;
+	height: 65px;
+	width: 140px;
+	font-size: 18px;
+	background-color: var(--slate3);
+	color: var(--slate11);
+	border: 1px solid var(--slate7);
+	border-radius: 10px;
+	cursor: pointer;
+}
+.button:hover {
+	background-color: var(--slate4) !important;
+	border-color: var(--slate8) !important;
+}
+.button:active {
+	background-color: var(--slate5) !important;
+}
+
+.error {
+	color: var(--red11);
+}
+
+.link {
+	height: 60px;
+	width: 130px;
+	font-size: 18px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--slate3);
+	color: var(--slate11);
+	border: 1px solid var(--slate7);
+	border-radius: 10px;
+	padding: 15px;
+	text-decoration: none;
+}
+.link:hover {
+	background-color: var(--slate4) !important;
+	border-color: var(--slate8) !important;
+}
+.link:active {
+	background-color: var(--slate5) !important;
+}

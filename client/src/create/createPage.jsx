@@ -93,7 +93,7 @@ export const CreatePage = ({ blocks = null }) => {
 	return (
 		<section>
 		{
-			config.length > 0 ? 
+			config.length > 0 ?
 			
 				<form id="form" onSubmit={handleFormSubmit}>
 				{
