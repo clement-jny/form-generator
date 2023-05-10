@@ -10,7 +10,7 @@ export const Landing = () => {
 				<q className={styles.quote}>Create forms easily from a JSON file!</q>
 			</div>
 
-			<span className={styles.border}></span>
+			<span className={styles.separator}></span>
 
 			<div className={styles.linksContainer}>
 				<a href="#start" className={styles.link}>Get Started</a>

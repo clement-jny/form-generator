@@ -4,9 +4,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 
 import { HomePage } from "./home/homePage";
-import { CreatePage } from "./create/createPage";
+import { GeneratePage } from "./generate/generatePage";
 import { TryPage } from "./try/tryPage";
 import { HistoryPage } from "./history/historyPage";
+
 
 const router = createBrowserRouter([
 	{
@@ -14,12 +15,8 @@ const router = createBrowserRouter([
 		element: <HomePage />,
 	},
 	{
-		path: "/start",
-		element: <p>aa</p>
-	},
-	{
-		path: "/create",
-		element: <CreatePage />
+		path: "/generate",
+		element: <GeneratePage />
 	},
 	{
 		path: "/try",

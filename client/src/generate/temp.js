@@ -1,5 +1,23 @@
 
 <Input label={input.label} name={input.name} type={input.type} required={input.required} visibility={input.visibility} onChangeEv={handleInputChange} />
+{/* input.type === "rating"
+? (<Rating input={input} />)
+: (<Input input={input} onChange={handleInputChange} formInputs={formInputs} />) */}
+
+input.type === "rating"
+	? (<Rating input={input} onChange={handleInputChange} />)
+	: (<Input input={input} onChange={handleInputChange} formInputs={formInputs} />)
+
+	,
+{
+	"label": "Note",
+	"name": "rate",
+	"type": "rating",
+	"required": false,
+	"visibility": null,
+	"minChar": null
+}
+
 
 
 {/* formData.inputs.map((input) => (

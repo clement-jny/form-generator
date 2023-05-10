@@ -9,14 +9,24 @@
 				"name": "firstname",
 				"type": "text",
 				"required": false,
-				"visibility": null
+				"visibility": null,
+				"minChar": 3
 			},
 			{
 				"label": "Age",
 				"name": "age",
 				"type": "number",
 				"required": false,
-				"visibility": "firstname=John"
+				"visibility": "firstname=John",
+				"minChar": null
+			},
+			{
+				"label": "CdC",
+				"name": "cdc",
+				"type": "checkbox",
+				"required": false,
+				"visibility": "age=18",
+				"minChar": null
 			}
 		]
 	},
@@ -30,14 +40,16 @@
 				"name": "login",
 				"type": "text",
 				"required": true,
-				"visibility": "firstname=John"
+				"visibility": null,
+				"minChar": null
 			},
 			{
 				"label": "Password",
 				"name": "password",
 				"type": "password",
 				"required": true,
-				"visibility": "firstname=John"
+				"visibility": null,
+				"minChar": null
 			}
 		]
 	}

@@ -9,7 +9,7 @@
 	flex-direction: column;
 }
 
-.border {
+.separator {
 	margin: 25px;
 	width: 425px;
 	border-bottom: 1px solid var(--slate6);
