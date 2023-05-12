@@ -3,29 +3,100 @@
 		"id": 1,
 		"name": "customer",
 		"title": "Infos client",
-		"inputs": [
+		"fields": [
 			{
+				"type": "text",
+
 				"label": "Prénom",
 				"name": "firstname",
-				"type": "text",
+				
 				"required": false,
 				"visibility": null,
 				"minChar": 3
 			},
 			{
+				"type": "number",
+
 				"label": "Age",
 				"name": "age",
-				"type": "number",
+				
 				"required": false,
-				"visibility": "firstname=John",
+				"visibility": null,
 				"minChar": null
 			},
+
 			{
-				"label": "CdC",
-				"name": "cdc",
 				"type": "checkbox",
+
+				"label": "Check",
+				"name": "check",
+				
 				"required": false,
-				"visibility": "age=18",
+				"visibility": null,
+				"minChar": null
+			},
+
+			{
+				"type": "textarea",
+
+				"label": "Area",
+				"name": "area",
+				
+				"required": false,
+				"visibility": null,
+				"minChar": null
+			},
+
+			{
+				"type": "select",
+
+				"label": "Select Pets",
+				"name": "selectPets",
+				
+				"required": false,
+				"visibility": null,
+				"minChar": null,
+				"options": [
+					{
+						"label": "Dog",
+						"value": "dog"
+					},
+					{
+						"label": "Cat",
+						"value": "cat"
+					}
+				]
+			},
+			{
+				"type": "radio",
+
+				"label": "Radio Pets",
+				"name": "radioPets",
+				
+				"required": false,
+				"visibility": null,
+				"minChar": null,
+				"choices": [
+					{
+						"label": "Dog",
+						"value": "dog",
+						"defaultChecked": false
+					},
+					{
+						"label": "Cat",
+						"value": "cat",
+						"defaultChecked": true
+					}
+				]
+			},
+			{
+				"type": "rating",
+
+				"label": "Rate",
+				"name": "rate",
+				
+				"required": false,
+				"visibility": null,
 				"minChar": null
 			}
 		]
@@ -34,20 +105,24 @@
 		"id": 2,
 		"name": "login",
 		"title": "Infos login",
-		"inputs": [
+		"fields": [
 			{
+				"type": "text",
+
 				"label": "Login",
 				"name": "login",
-				"type": "text",
-				"required": true,
+				
+				"required": false,
 				"visibility": null,
 				"minChar": null
 			},
 			{
+				"type": "password",
+				
 				"label": "Password",
 				"name": "password",
-				"type": "password",
-				"required": true,
+				
+				"required": false,
 				"visibility": null,
 				"minChar": null
 			}
