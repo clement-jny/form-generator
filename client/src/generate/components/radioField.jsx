@@ -36,10 +36,12 @@
 // 	]
 // }
 
-import { useId } from "react"
+import { useId } from "react";
+import { isFieldVisible } from "../helper/isFieldVisible";
 
 export const RadioField = ({ field, onChangeField, formFields }) => {
 	const id = useId();
+	// console.log(id + "-dog");
 
 	return (
 		<div key={field.name}>
@@ -47,11 +49,11 @@ export const RadioField = ({ field, onChangeField, formFields }) => {
 			{
 				field.choices.map((choice) => (
 					<>
-						<label htmlFor={choice.value}>
+						<label htmlFor={id + "-" + choice.value}>
 							<span>{choice.label}</span>
 						</label>
 
-						<input id={choice.value} type={field.type} name={field.name} />
+						<input id={id + "-" + choice.value} type={field.type} name={field.name} required={field.required} onChange={onChangeField} value={choice.value} />
 					</>
 				))
 			}

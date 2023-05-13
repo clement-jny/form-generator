@@ -1,4 +1,4 @@
-const isFieldVisible = (field, formFields) => {
+export const isFieldVisible = (field, formFields) => {
 	if (field.visibility === null) {
 		return true;
 	}

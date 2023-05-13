@@ -11,6 +11,7 @@
 				"name": "firstname",
 				
 				"required": false,
+				"disabled": false,
 				"visibility": null,
 				"minChar": 3
 			},
@@ -21,6 +22,7 @@
 				"name": "age",
 				
 				"required": false,
+				"disabled": false,
 				"visibility": null,
 				"minChar": null
 			},
@@ -32,6 +34,7 @@
 				"name": "check",
 				
 				"required": false,
+				"disabled": false,
 				"visibility": null,
 				"minChar": null
 			},
@@ -41,8 +44,12 @@
 
 				"label": "Area",
 				"name": "area",
+
+				"cols": 10,
+				"rows": 5,
 				
 				"required": false,
+				"disabled": false,
 				"visibility": null,
 				"minChar": null
 			},
@@ -54,9 +61,15 @@
 				"name": "selectPets",
 				
 				"required": false,
+				"disabled": false,
 				"visibility": null,
 				"minChar": null,
+
 				"options": [
+					{
+						"label": "-- Please select an animal --",
+						"value": ""
+					},
 					{
 						"label": "Dog",
 						"value": "dog"
@@ -74,8 +87,10 @@
 				"name": "radioPets",
 				
 				"required": false,
+				"disabled": false,
 				"visibility": null,
 				"minChar": null,
+
 				"choices": [
 					{
 						"label": "Dog",
@@ -88,16 +103,6 @@
 						"defaultChecked": true
 					}
 				]
-			},
-			{
-				"type": "rating",
-
-				"label": "Rate",
-				"name": "rate",
-				
-				"required": false,
-				"visibility": null,
-				"minChar": null
 			}
 		]
 	},
@@ -113,6 +118,7 @@
 				"name": "login",
 				
 				"required": false,
+				"disabled": false,
 				"visibility": null,
 				"minChar": null
 			},
@@ -123,6 +129,7 @@
 				"name": "password",
 				
 				"required": false,
+				"disabled": false,
 				"visibility": null,
 				"minChar": null
 			}

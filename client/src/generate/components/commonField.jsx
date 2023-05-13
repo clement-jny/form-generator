@@ -23,44 +23,27 @@
 //<p>Tous ce qui est text, (password,) number, date, email, checkbox</p>
 
 import { useId } from "react";
+import { isFieldVisible } from "../helper/isFieldVisible";
 
 export const CommonField = ({ field, onChangeField, formFields }) => {
 	const id = useId();
 
 	return (
-		<div key={field.name} style={{ display: "flex", flexDirection: "column"}}>
-			<label >{/*htmlFor={id}*/}
+		<div key={field.name}>
+			<label htmlFor={id + "-" + field.name}>
 				<span>{field.label}</span>
-</label>
-				<input
-					// id={id}
-					type={isFieldVisible(field, formFields) ? field.type : "hidden"}
-					name={field.name}
-					required={field.required}
-					onChange={onChangeField}
-					value={formFields[field.name]}
-					checked={field.defaultChecked}
-					// style={{ display: isFieldVisible(field, formFields) ? 'block' : 'none' }}
-				/>
-			
+			</label>
+
+			<input
+				id={id + "-" + field.name}
+				type={isFieldVisible(field, formFields) ? field.type : "hidden"}
+				name={field.name}
+				required={field.required}
+				onChange={onChangeField}
+				value={formFields[field.name]}
+				checked={field.defaultChecked}
+			// style={{ display: isFieldVisible(field, formFields) ? 'block' : 'none' }}
+			/>
 		</div>
 	);
 };
-
-const isFieldVisible = (field, formFields) => {
-	if (field.visibility === null) {
-		return true;
-	}
-
-	if (field.visibility.includes("&")) {
-		const conditions = field.visibility.split("&");
-
-		return conditions.every((condition) => {
-			const [dependency, value] = condition.split('=');
-			return formFields[dependency] === value;
-		});
-	} else {
-		const [dependency, value] = field.visibility.split('=');
-		return formFields[dependency] === value;
-	}
-}

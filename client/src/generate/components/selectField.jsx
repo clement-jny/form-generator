@@ -26,24 +26,23 @@
 // ]
 
 import { useId } from "react"
-
+import { isFieldVisible } from "../helper/isFieldVisible";
 
 export const SelectField = ({ field, onChangeField, formFields }) => {
 	const id = useId();
 
 	return (
 		<div key={field.name}>
-			<label htmlFor={id}>
+			<label htmlFor={id + "-" + field.name}>
 				<span>{field.label}</span>
 			</label>
 
-			<select id={id} name={field.name}>
+			<select id={id + "-" + field.name} name={field.name} required={field.required} onChange={onChangeField} value={formFields[field.name]}>
 			{
 				field.options.map((opt) => (
 					<option value={opt.value}>{opt.label}</option>
 				))
 			}
-
 			</select>
 		</div>
 	);

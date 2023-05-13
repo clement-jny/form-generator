@@ -1,11 +1,14 @@
 import { useState, useEffect, useId } from "react";
 import { useLocation } from "react-router-dom";
 
+import styles from "./css/generatePage.module.css";
+
 import { CommonField } from "./components/commonField";
 import { SelectField } from "./components/selectField";
 import { RadioField } from "./components/radioField";
 import { TextareaField } from "./components/textareatField";
 import { RatingField } from "./components/ratingField";
+import { Loading } from "./components/loading";
 
 // import formData from "./utils/form.json";
 
@@ -15,11 +18,15 @@ export const GeneratePage = () => {
 	//if (content) setConfig(content);
 	//console.log("config", config);
 
+	const [isLoading, setIsLoading] = useState(false);
 	const [config, setConfig] = useState([]);
 	const [formFields, setFormFields] = useState({});
 
+
 	/* Fetch the configuration file and save it into the config state */
 	useEffect(() => {
+		setIsLoading(true);
+
 		fetch("http://localhost:5173/src/generate/utils/configuration.json")
 			.then((res) => {
 				if (res.ok) {
@@ -29,6 +36,7 @@ export const GeneratePage = () => {
 				}
 			})
 			.then((res) => {
+				setIsLoading(false);
 				setConfig(res);
 			})
 			.catch((err) => {
@@ -85,23 +93,18 @@ export const GeneratePage = () => {
 		switch (field.type) {
 			case "select":
 				return <SelectField field={field} onChangeField={handleFieldChange} formFields={formFields} />;
-				break;
 
 			case "radio":
 				return <RadioField field={field} onChangeField={handleFieldChange} formFields={formFields} />;
-				break;
 
 			case "textarea":
 				return <TextareaField field={field} onChangeField={handleFieldChange} formFields={formFields} />;
-				break;
 
 			case "rating":
 				return <RatingField field={field} onChangeField={handleFieldChange} formFields={formFields} />;
-				break;
 
 			default:
 				return <CommonField field={field} onChangeField={handleFieldChange} formFields={formFields} />;
-				break;
 		}
 	}
 
@@ -125,24 +128,26 @@ export const GeneratePage = () => {
 	};
 
 	return (
-		<section>
+		<section className={styles.container}>
 			{
-				config.length > 0 ? (
-					<form id="form" onSubmit={handleFormSubmit}>
-						{
-							config.map((block) => (
-								<fieldset key={block.id}>
-									<legend>{block.title}</legend>
-									{
-										block.fields.map(field => renderField(field))
-									}
-								</fieldset>
-							))
-						}
+				isLoading
+					? (<Loading />)
+					: (
+						<form id="form" onSubmit={handleFormSubmit}>
+							{
+								config.map((block) => (
+									<fieldset key={block.id}>
+										<legend>{block.title}</legend>
+										{
+											block.fields.map(field => renderField(field))
+										}
+									</fieldset>
+								))
+							}
 
-						<button type="submit">Submit</button>
-					</form>
-				) : (<p>Loading data...</p>)
+							<button type="submit">Submit</button>
+						</form>
+					)
 			}
 		</section>
 	)

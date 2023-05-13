@@ -1,4 +1,17 @@
+// ,
+// {
+// 	"type": "rating",
+
+// 	"label": "Rate",
+// 	"name": "rate",
+	
+// 	"required": false,
+// 	"visibility": null,
+// 	"minChar": null
+// }
+
 import { useId } from "react";
+import { isFieldVisible } from "../helper/isFieldVisible";
 
 export const RatingField = ({ field, onChangeField, formFields }) => {
 	const id = useId();
