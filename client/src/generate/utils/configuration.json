@@ -7,10 +7,10 @@
 			{
 				"type": "text",
 
-				"label": "Prénom",
+				"label": "Firstname",
 				"name": "firstname",
 				
-				"required": false,
+				"required": true,
 				"disabled": false,
 				"visibility": null,
 				"minChar": 3
@@ -21,7 +21,7 @@
 				"label": "Age",
 				"name": "age",
 				
-				"required": false,
+				"required": true,
 				"disabled": false,
 				"visibility": null,
 				"minChar": null
@@ -33,7 +33,7 @@
 				"label": "Check",
 				"name": "check",
 				
-				"required": false,
+				"required": true,
 				"disabled": false,
 				"visibility": null,
 				"minChar": null
@@ -48,7 +48,7 @@
 				"cols": 10,
 				"rows": 5,
 				
-				"required": false,
+				"required": true,
 				"disabled": false,
 				"visibility": null,
 				"minChar": null
@@ -60,7 +60,7 @@
 				"label": "Select Pets",
 				"name": "selectPets",
 				
-				"required": false,
+				"required": true,
 				"disabled": false,
 				"visibility": null,
 				"minChar": null,
@@ -86,7 +86,7 @@
 				"label": "Radio Pets",
 				"name": "radioPets",
 				
-				"required": false,
+				"required": true,
 				"disabled": false,
 				"visibility": null,
 				"minChar": null,
@@ -94,44 +94,13 @@
 				"choices": [
 					{
 						"label": "Dog",
-						"value": "dog",
-						"defaultChecked": false
+						"value": "dog"
 					},
 					{
 						"label": "Cat",
-						"value": "cat",
-						"defaultChecked": true
+						"value": "cat"
 					}
 				]
-			}
-		]
-	},
-	{
-		"id": 2,
-		"name": "login",
-		"title": "Infos login",
-		"fields": [
-			{
-				"type": "text",
-
-				"label": "Login",
-				"name": "login",
-				
-				"required": false,
-				"disabled": false,
-				"visibility": null,
-				"minChar": null
-			},
-			{
-				"type": "password",
-				
-				"label": "Password",
-				"name": "password",
-				
-				"required": false,
-				"disabled": false,
-				"visibility": null,
-				"minChar": null
 			}
 		]
 	}

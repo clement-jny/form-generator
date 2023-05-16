@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import styles from "./css/generatePage.module.css";
 
 import { CommonField } from "./components/commonField";
+import { CheckboxComponent } from "./components/checkboxComponent";
 import { SelectField } from "./components/selectField";
 import { RadioField } from "./components/radioField";
 import { TextareaField } from "./components/textareatField";
@@ -21,6 +22,7 @@ export const GeneratePage = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [config, setConfig] = useState([]);
 	const [formFields, setFormFields] = useState({});
+	const [formErrors, setFormErrors] = useState({});
 
 
 	/* Fetch the configuration file and save it into the config state */
@@ -91,6 +93,9 @@ export const GeneratePage = () => {
 	/* Render a specific field based on the type */
 	const renderField = (field) => {
 		switch (field.type) {
+			case "checkbox":
+				return <CheckboxComponent field={field} onChangeField={handleFieldChange} formFields={formFields} formErrors={formErrors} />
+
 			case "select":
 				return <SelectField field={field} onChangeField={handleFieldChange} formFields={formFields} />;
 
@@ -104,7 +109,7 @@ export const GeneratePage = () => {
 				return <RatingField field={field} onChangeField={handleFieldChange} formFields={formFields} />;
 
 			default:
-				return <CommonField field={field} onChangeField={handleFieldChange} formFields={formFields} />;
+				return <CommonField field={field} onChangeField={handleFieldChange} formFields={formFields} formErrors={formErrors} />;
 		}
 	}
 
@@ -112,6 +117,34 @@ export const GeneratePage = () => {
 	/* Called when the form trigger 'onSubmit' event */
 	const handleFormSubmit = (event) => {
 		event.preventDefault();
+
+		const errors = {};
+
+		// Vérifier les champs requis
+		config.forEach((block) => {
+			block.fields.forEach((field) => {
+				/* This code block is checking if a field is required and if its corresponding value in the
+				`formFields` state is empty or falsy. If both conditions are true, it adds an error message to
+				the `errors` object with the field name as the key and a string message as the value. The error
+				message indicates that the field is required and provides the label of the field. This is used
+				to validate the form before submission and display error messages for any required fields that
+				are not filled out. */
+				if (field.required && !formFields[field.name]) {
+					errors[field.name] = " This field is required";
+				}
+			});
+		});
+
+		// Mettre à jour les erreurs du formulaire
+		setFormErrors(errors);
+
+		// Soumettre le formulaire si aucune erreur n'est présente
+		if (Object.keys(errors).length === 0) {
+			// Soumettre le formulaire
+			console.log("Valid.", formFields);
+		} else {
+			console.log("Not valid.", formFields);
+		}
 
 		// for (const key in formFields) {
 		// 	if (formFields[key].trim().length === 0) {
@@ -122,9 +155,6 @@ export const GeneratePage = () => {
 		// 		//setShowError(true);
 		// 	}
 		// }
-
-		//alert(inputs.firstname, inputs.age);
-		console.log(formFields);
 	};
 
 	return (

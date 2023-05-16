@@ -20,30 +20,25 @@
 // 	"minChar": null
 // },
 
-//<p>Tous ce qui est text, (password,) number, date, email, checkbox</p>
+//Tous ce qui est text, password, number, date, email
 
 import { useId } from "react";
 import { isFieldVisible } from "../helper/isFieldVisible";
+import styles from "../css/commonField.module.css";
 
-export const CommonField = ({ field, onChangeField, formFields }) => {
+export const CommonField = ({ field, onChangeField, formFields, formErrors }) => {
 	const id = useId();
 
 	return (
-		<div key={field.name}>
-			<label htmlFor={id + "-" + field.name}>
+		<div className={isFieldVisible(field, formFields) ? styles.inputContainer : styles.notInputContainer}>
+			<label htmlFor={id + "-" + field.name} className={styles.label}>
 				<span>{field.label}</span>
+				{field.required && <span className={styles.required}> *</span>}
 			</label>
 
-			<input
-				id={id + "-" + field.name}
-				type={isFieldVisible(field, formFields) ? field.type : "hidden"}
-				name={field.name}
-				required={field.required}
-				onChange={onChangeField}
-				value={formFields[field.name]}
-				checked={field.defaultChecked}
-			// style={{ display: isFieldVisible(field, formFields) ? 'block' : 'none' }}
-			/>
+			<input id={id + "-" + field.name} type={isFieldVisible(field, formFields) ? field.type : "hidden"} name={field.name} className={`${styles.input} ${formErrors[field.name] ? styles.error : ""}`} value={formFields[field.name]} onChange={onChangeField} placeholder={field.label} />
+			
+			<span className={styles.errorMessage}>{formErrors[field.name]}</span>
 		</div>
 	);
 };

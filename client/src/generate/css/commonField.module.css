@@ -1,0 +1,46 @@
+.notInputContainer {
+	display: none;
+}
+
+.inputContainer {
+	display: flex;
+	flex-direction: column;
+	height: 70px;
+	margin-bottom: 20px;
+}
+
+.label {
+	font-size: 17px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.required {
+	color: red;
+}
+
+.input {
+	padding: 10px;
+	border: 1px solid var(--slate6);
+	border-radius: 5px;
+	outline: none;
+}
+.input:hover {
+	border-color: var(--slate7);
+}
+.input:focus {
+	border-color: var(--slate8);
+}
+.error {
+	border-color: var(--red9) !important;
+}
+.error:hover {
+	border-color: var(--red9) !important;
+}
+.error:focus {
+	border-color: var(--red9) !important;
+}
+
+.errorMessage {
+	color: var(--red11);
+	font-size: 13px;
+}
