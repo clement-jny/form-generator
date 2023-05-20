@@ -1,5 +1,5 @@
 import { Landing } from "./components/landing";
-import { Dropzone } from "./components/dropZone";
+import { Dropzone } from "./components/dropzone";
 import { useLayoutEffect } from "react";
 
 export const HomePage = () => {

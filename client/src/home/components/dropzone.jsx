@@ -7,7 +7,6 @@ import styles from "../css/dropzone.module.css";
 export const Dropzone = () => {
 	const [content, setContent] = useState([]);
 	const [errorMessage, setErrorMessage] = useState("");
-	// const [isDisabled, setIsDisabled] = useState(true);
 
 	const { open, getRootProps, getInputProps, isDragAccept, isDragReject } = useDropzone(
 		{
@@ -20,7 +19,21 @@ export const Dropzone = () => {
 
 				if (acceptedFiles[0]) reader.readAsText(acceptedFiles[0]);
 
-				reader.onload = () => setContent(reader.result);
+				//reader.onload = () => setContent(reader.result);
+
+				const formData = new FormData();
+				formData.append('file', acceptedFiles[0]);
+
+				fetch("http://localhost:3001/upload", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: formData
+				})
+					.then(response => response.json())
+					.then(data => alert(data.message))
+					.catch(error => console.error(error))
 			},
 			onDropRejected: fileRejections => {
 				setErrorMessage(fileRejections[0].errors[0].message);
@@ -42,7 +55,7 @@ export const Dropzone = () => {
 				<p className={styles.error}>{errorMessage}</p>
 
 				<div {...getRootProps()} className={`${styles.dropzone} ${isDragAccept ? styles.dropzoneAccept : isDragReject ? styles.dropzoneReject : ""}`}>  {/* { style: dropzoneStyle } */}
-					<input {...getInputProps()} />
+					<input {...getInputProps()} id="fileInput" name="fileInput" />
 
 					<p className={styles.title}>Drop a file here</p>
 					<em className={styles.subtitle}>(Only 1 .json file will be accepted)</em>
@@ -56,8 +69,8 @@ export const Dropzone = () => {
 			{
 				content.length > 0 && (
 					<div>
-						{/* <textarea cols="50" rows="15" value={content} onChange={e => setContent(e.target.value)} disabled={isDisabled} /> */}
-						<Link to="/generate" state={{ content: content }} className={styles.link}>Generate</Link>
+						{/* <Link to="/generate" state={{ content: content }} className={styles.link}>Generate</Link> */}
+						<button type="button" onClick={sendFile}>Send File</button>
 					</div>
 				)
 			}
