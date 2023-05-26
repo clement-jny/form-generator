@@ -1,7 +1,7 @@
-import { useState, useEffect, useId } from "react";
-import { useLocation } from "react-router-dom";
-
-import styles from "./css/generatePage.module.css";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import { useGetFile } from "../hooks/use-get-file";
 
 import { CommonField } from "./components/commonField";
 import { CheckboxComponent } from "./components/checkboxComponent";
@@ -9,46 +9,19 @@ import { SelectField } from "./components/selectField";
 import { RadioField } from "./components/radioField";
 import { TextareaField } from "./components/textareatField";
 import { RatingField } from "./components/ratingField";
-import { Loading } from "./components/loading";
+import { Loading } from "../utils/loading";
 
-// import formData from "./utils/form.json";
+import styles from "./css/generatePage.module.css";
 
 export const GeneratePage = () => {
-	//const { state: { content } } = useLocation();
-	//console.log(content);
-	//if (content) setConfig(content);
-	//console.log("config", config);
-
-	const [isLoading, setIsLoading] = useState(false);
-	const [config, setConfig] = useState([]);
+	const { fileId } = useParams();
+	const { data, isLoading } = useGetFile(fileId);
 	const [formFields, setFormFields] = useState({});
 	const [formErrors, setFormErrors] = useState({});
 
-
-	/* Fetch the configuration file and save it into the config state */
+	/* When data, get the form element and then get all inputs, selects, textarea. Save the name into a new state */
 	useEffect(() => {
-		setIsLoading(true);
-
-		fetch("http://localhost:5173/src/generate/utils/configuration.json")
-			.then((res) => {
-				if (res.ok) {
-					return res.json();
-				} else {
-					throw new Error(res.status);
-				}
-			})
-			.then((res) => {
-				setIsLoading(false);
-				setConfig(res);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-	}, []);
-
-	/* When config, get the form element and then get all inputs, selects, textarea. Save the name into a new state */
-	useEffect(() => {
-		if (config) {
+		if (data) {
 			const formElement = document.getElementById("form");
 			if (!formElement) return;
 
@@ -80,8 +53,7 @@ export const GeneratePage = () => {
 
 			setFormFields({ ...structuredClone(inputNames), ...structuredClone(selectNames), ...structuredClone(textareaNames) });
 		}
-	}, [config]);
-
+	}, [data]);
 
 	/* Called when a field trigger 'onChange' event */
 	const handleFieldChange = (event) => {
@@ -113,7 +85,6 @@ export const GeneratePage = () => {
 		}
 	}
 
-
 	/* Called when the form trigger 'onSubmit' event */
 	const handleFormSubmit = (event) => {
 		event.preventDefault();
@@ -121,14 +92,8 @@ export const GeneratePage = () => {
 		const errors = {};
 
 		// Vérifier les champs requis
-		config.forEach((block) => {
+		data.forEach((block) => {
 			block.fields.forEach((field) => {
-				/* This code block is checking if a field is required and if its corresponding value in the
-				`formFields` state is empty or falsy. If both conditions are true, it adds an error message to
-				the `errors` object with the field name as the key and a string message as the value. The error
-				message indicates that the field is required and provides the label of the field. This is used
-				to validate the form before submission and display error messages for any required fields that
-				are not filled out. */
 				if (field.required && !formFields[field.name]) {
 					errors[field.name] = " This field is required";
 				}
@@ -145,16 +110,6 @@ export const GeneratePage = () => {
 		} else {
 			console.log("Not valid.", formFields);
 		}
-
-		// for (const key in formFields) {
-		// 	if (formFields[key].trim().length === 0) {
-
-		// 		//console.log(formFields[key] < );
-		// 		//console.log(`-${key}: vide`);
-		// 		//alert("Some fields are empty!");
-		// 		//setShowError(true);
-		// 	}
-		// }
 	};
 
 	return (
@@ -165,7 +120,7 @@ export const GeneratePage = () => {
 					: (
 						<form id="form" onSubmit={handleFormSubmit}>
 							{
-								config.map((block) => (
+								data.map((block) => (
 									<fieldset key={block.id}>
 										<legend>{block.title}</legend>
 										{

@@ -1,0 +1,31 @@
+[
+	{
+		"id": 1,
+		"name": "login",
+		"title": "Infos login",
+		"fields": [
+			{
+				"type": "text",
+
+				"label": "Login",
+				"name": "login",
+				
+				"required": false,
+				"disabled": false,
+				"visibility": null,
+				"minChar": null
+			},
+			{
+				"type": "password",
+				
+				"label": "Password",
+				"name": "password",
+				
+				"required": false,
+				"disabled": false,
+				"visibility": null,
+				"minChar": null
+			}
+		]
+	}
+]

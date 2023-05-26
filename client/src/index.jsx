@@ -1,5 +1,7 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Toaster } from 'react-hot-toast';
 
 import "./index.css";
 
@@ -9,13 +11,15 @@ import { TryPage } from "./try/tryPage";
 import { HistoryPage } from "./history/historyPage";
 
 
+const queryClient = new QueryClient();
+
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <HomePage />,
 	},
 	{
-		path: "/generate",
+		path: "/generate/:fileId",
 		element: <GeneratePage />
 	},
 	{
@@ -28,4 +32,9 @@ const router = createBrowserRouter([
 	}
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(<RouterProvider router={router} />);
+ReactDOM.createRoot(document.getElementById('root')).render(
+	<QueryClientProvider client={queryClient}>
+		<Toaster position="top-right" />
+		<RouterProvider router={router} />
+	</QueryClientProvider>
+);

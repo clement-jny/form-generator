@@ -1,0 +1,107 @@
+[
+	{
+		"id": 1,
+		"name": "customer",
+		"title": "Infos client",
+		"fields": [
+			{
+				"type": "text",
+
+				"label": "Firstname",
+				"name": "firstname",
+				
+				"required": true,
+				"disabled": false,
+				"visibility": null,
+				"minChar": 3
+			},
+			{
+				"type": "number",
+
+				"label": "Age",
+				"name": "age",
+				
+				"required": true,
+				"disabled": false,
+				"visibility": null,
+				"minChar": null
+			},
+
+			{
+				"type": "checkbox",
+
+				"label": "Check",
+				"name": "check",
+				
+				"required": true,
+				"disabled": false,
+				"visibility": null,
+				"minChar": null
+			},
+
+			{
+				"type": "textarea",
+
+				"label": "Area",
+				"name": "area",
+
+				"cols": 10,
+				"rows": 5,
+				
+				"required": true,
+				"disabled": false,
+				"visibility": null,
+				"minChar": null
+			},
+
+			{
+				"type": "select",
+
+				"label": "Select Pets",
+				"name": "selectPets",
+				
+				"required": true,
+				"disabled": false,
+				"visibility": null,
+				"minChar": null,
+
+				"options": [
+					{
+						"label": "-- Please select an animal --",
+						"value": ""
+					},
+					{
+						"label": "Dog",
+						"value": "dog"
+					},
+					{
+						"label": "Cat",
+						"value": "cat"
+					}
+				]
+			},
+			{
+				"type": "radio",
+
+				"label": "Radio Pets",
+				"name": "radioPets",
+				
+				"required": true,
+				"disabled": false,
+				"visibility": null,
+				"minChar": null,
+
+				"choices": [
+					{
+						"label": "Dog",
+						"value": "dog"
+					},
+					{
+						"label": "Cat",
+						"value": "cat"
+					}
+				]
+			}
+		]
+	}
+]
