@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { useGetFile } from "../hooks/use-get-file";
 
 import { CommonField } from "./components/commonField";
-import { CheckboxComponent } from "./components/checkboxComponent";
+import { CheckboxField } from "./components/checkboxField";
 import { SelectField } from "./components/selectField";
 import { RadioField } from "./components/radioField";
 import { TextareaField } from "./components/textareatField";
@@ -22,6 +22,8 @@ export const GeneratePage = () => {
 	/* When data, get the form element and then get all inputs, selects, textarea. Save the name into a new state */
 	useEffect(() => {
 		if (data) {
+			toast.success("Successfully generated");
+
 			const formElement = document.getElementById("form");
 			if (!formElement) return;
 
@@ -66,19 +68,19 @@ export const GeneratePage = () => {
 	const renderField = (field) => {
 		switch (field.type) {
 			case "checkbox":
-				return <CheckboxComponent field={field} onChangeField={handleFieldChange} formFields={formFields} formErrors={formErrors} />
+				return <CheckboxField field={field} onChangeField={handleFieldChange} formFields={formFields} formErrors={formErrors} />
 
 			case "select":
-				return <SelectField field={field} onChangeField={handleFieldChange} formFields={formFields} />;
+				return <SelectField field={field} onChangeField={handleFieldChange} formFields={formFields} formErrors={formErrors} />;
 
 			case "radio":
-				return <RadioField field={field} onChangeField={handleFieldChange} formFields={formFields} />;
+				return <RadioField field={field} onChangeField={handleFieldChange} formFields={formFields} formErrors={formErrors} />;
 
 			case "textarea":
-				return <TextareaField field={field} onChangeField={handleFieldChange} formFields={formFields} />;
+				return <TextareaField field={field} onChangeField={handleFieldChange} formFields={formFields} formErrors={formErrors} />;
 
 			case "rating":
-				return <RatingField field={field} onChangeField={handleFieldChange} formFields={formFields} />;
+				return <RatingField field={field} onChangeField={handleFieldChange} formFields={formFields} formErrors={formErrors} />;
 
 			default:
 				return <CommonField field={field} onChangeField={handleFieldChange} formFields={formFields} formErrors={formErrors} />;
@@ -107,8 +109,10 @@ export const GeneratePage = () => {
 		if (Object.keys(errors).length === 0) {
 			// Soumettre le formulaire
 			console.log("Valid.", formFields);
+			toast.success("Successfully validated, check your console");
 		} else {
 			console.log("Not valid.", formFields);
+			toast.error("Some fields are missing");
 		}
 	};
 
@@ -118,10 +122,10 @@ export const GeneratePage = () => {
 				isLoading
 					? (<Loading />)
 					: (
-						<form id="form" onSubmit={handleFormSubmit}>
+						<form id="form" className={styles.form} onSubmit={handleFormSubmit}>
 							{
 								data.map((block) => (
-									<fieldset key={block.id}>
+									<fieldset key={block.id} className={styles.fieldset}>
 										<legend>{block.title}</legend>
 										{
 											block.fields.map(field => renderField(field))
@@ -130,7 +134,7 @@ export const GeneratePage = () => {
 								))
 							}
 
-							<button type="submit">Submit</button>
+							<button type="submit" className={styles.submit}>Submit</button>
 						</form>
 					)
 			}

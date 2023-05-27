@@ -1,27 +1,3 @@
-// {
-// 	"type": "date",
-
-// 	"label": "Date",
-// 	"name": "date",
-
-// 	"required": false,
-// 	"visibility": null,
-// 	"minChar": null
-// },
-
-// {
-// 	"type": "email",
-
-// 	"label": "Mail",
-// 	"name": "mail",
-
-// 	"required": false,
-// 	"visibility": null,
-// 	"minChar": null
-// },
-
-//Tous ce qui est text, password, number, date, email
-
 import { useId } from "react";
 import { isFieldVisible } from "../helper/isFieldVisible";
 import styles from "../css/commonField.module.css";

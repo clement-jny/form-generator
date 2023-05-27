@@ -66,7 +66,6 @@ export const Dropzone = () => {
 						<Link to={`/generate/${fileId}`} className={styles.link}>Generate</Link>
 					</div>
 				)
-
 			}
 		</section>
 	);

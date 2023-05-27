@@ -1,18 +1,12 @@
-.container {
-	height: 40px;
-	margin-bottom: 20px;
-}
-
-.notContainer {
+.notInputContainer {
 	display: none;
 }
 
-
 .inputContainer {
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 10px;
+	flex-direction: column;
+	height: 95px;
+	margin-bottom: 20px;
 }
 
 .label {

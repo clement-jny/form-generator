@@ -13,7 +13,7 @@
 import { useId } from "react";
 import { isFieldVisible } from "../helper/isFieldVisible";
 
-export const RatingField = ({ field, onChangeField, formFields }) => {
+export const RatingField = ({ field, onChangeField, formFields, formErrors }) => {
 	const id = useId();
 
 	return (

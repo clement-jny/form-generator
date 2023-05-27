@@ -12,8 +12,7 @@
 				
 				"required": true,
 				"disabled": false,
-				"visibility": null,
-				"minChar": 3
+				"visibility": null
 			},
 			{
 				"type": "number",
@@ -23,8 +22,7 @@
 				
 				"required": true,
 				"disabled": false,
-				"visibility": null,
-				"minChar": null
+				"visibility": null
 			},
 
 			{
@@ -35,8 +33,7 @@
 				
 				"required": true,
 				"disabled": false,
-				"visibility": null,
-				"minChar": null
+				"visibility": null
 			},
 
 			{
@@ -44,14 +41,10 @@
 
 				"label": "Area",
 				"name": "area",
-
-				"cols": 10,
-				"rows": 5,
 				
 				"required": true,
 				"disabled": false,
-				"visibility": null,
-				"minChar": null
+				"visibility": null
 			},
 
 			{
@@ -63,7 +56,6 @@
 				"required": true,
 				"disabled": false,
 				"visibility": null,
-				"minChar": null,
 
 				"options": [
 					{
@@ -89,7 +81,6 @@
 				"required": true,
 				"disabled": false,
 				"visibility": null,
-				"minChar": null,
 
 				"choices": [
 					{

@@ -32,7 +32,7 @@ router.get("/", (req, res) => {
 				count: filteredFiles.length,
 				results: filteredFiles.map((file) => {
 					return {
-						id: file.split('*')[0],
+						id: Number(file.split('*')[0]),
 						name: file.split('*')[1],
 						path: path.join("./uploads", file)
 					};
@@ -47,7 +47,7 @@ router.get("/", (req, res) => {
 router.post("/", upload.single("file"), (req, res) => {
 	res.status(201).json(
 		{
-			message: "File saved successfully",
+			message: "Successfully saved",
 			id: req.file.filename.split('*')[0]
 		}
 	);

@@ -7,7 +7,6 @@ import "./index.css";
 
 import { HomePage } from "./home/homePage";
 import { GeneratePage } from "./generate/generatePage";
-import { TryPage } from "./try/tryPage";
 import { HistoryPage } from "./history/historyPage";
 
 
@@ -21,10 +20,6 @@ const router = createBrowserRouter([
 	{
 		path: "/generate/:fileId",
 		element: <GeneratePage />
-	},
-	{
-		path: "/try",
-		element: <TryPage />
 	},
 	{
 		path: "/history",

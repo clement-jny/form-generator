@@ -1,0 +1,19 @@
+.titles {
+	text-align: center;
+	vertical-align: middle;
+	padding: 15px 0;
+	color: var(--slate11);
+}
+
+.title {
+	font-size: 30px;
+}
+
+.grid {
+	padding: 20px;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 25px;
+	justify-content: center;
+	align-items: center;
+}
